@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Calculator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f3f3f3;
+        }
+
+        #calculator {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
+            max-width: 350px;
+            margin: auto;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        #display {
+            grid-column: span 4;
+            height: 70px;
+            font-size: 1.8em;
+            text-align: right;
+            padding: 0 12px;
+            box-sizing: border-box;
+            border-bottom: 2px solid #979292;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        button {
+            height: 70px;
+            font-size: 1.5em;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            background-color: #f0f0f0;
+            transition: background-color 0.3s;
+            user-select: none;
+            color: #333;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        button:hover {
+            background-color: #ddd;
+        }
+
+        button.operator {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        button.double {
+            grid-column: span 2;
+        }
+
+        button#equals {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        button#reset {
+            grid-column: span 4;
+            background-color: #dc3545;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="calculator">
+        <div id="display"></div>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button class="operator">/</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button class="operator">*</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button class="operator">-</button>
+        <button class="double">0</button>
+        <button>.</button>
+        <button id="equals" class="operator double">=</button>
+        <button id="reset">Reset</button>
+        <button class="operator">+</button>
+    </div>
+
+    <script>
+        const display = document.getElementById('display');
+        const buttons = document.querySelectorAll('button');
+        let currentInput = '';
+        let currentOperator = '';
+        let firstOperand = '';
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => handleButtonClick(button.innerText));
+        });
+
+        function handleButtonClick(value) {
+            if (isDigit(value)) {
+                handleDigit(value);
+            } else if (isOperator(value)) {
+                handleOperator(value);
+            } else if (value === '=') {
+                handleEquals();
+            } else if (value === 'Reset') {
+                handleReset();
+            }
+        }
+
+        function isDigit(value) {
+            return /^\d$/.test(value);
+        }
+
+        function isOperator(value) {
+            return /^[\+\-\*\/]$/.test(value);
+        }
+
+        function handleDigit(value) {
+            currentInput += value;
+            updateDisplay();
+        }
+
+        function handleOperator(value) {
+            if (currentOperator !== '' && currentInput !== '') {
+                handleEquals();
+            }
+            currentOperator = value;
+            if (firstOperand === '') {
+                firstOperand = currentInput;
+                currentInput = '';
+            }
+        }
+
+        function handleEquals() {
+            if (currentInput !== '') {
+                let result;
+                const secondOperand = currentInput;
+                switch (currentOperator) {
+                    case '+':
+                        result = parseFloat(firstOperand) + parseFloat(secondOperand);
+                        break;
+                    case '-':
+                        result = parseFloat(firstOperand) - parseFloat(secondOperand);
+                        break;
+                    case '*':
+                        result = parseFloat(firstOperand) * parseFloat(secondOperand);
+                        break;
+                    case '/':
+                        result = parseFloat(firstOperand) / parseFloat(secondOperand);
+                        break;
+                    default:
+                        result = currentInput;
+                        break;
+                }
+                currentInput = result.toString();
+                currentOperator = '';
+                firstOperand = '';
+                updateDisplay();
+            }
+        }
+
+        function handleReset() {
+            currentInput = '';
+            currentOperator = '';
+            firstOperand = '';
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            display.innerText = currentInput;
+        }
+    </script>
+
+</body>
+</html>
