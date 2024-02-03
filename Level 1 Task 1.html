@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shehryar - Portfolio</title>
+    <style>
+        /* Reset some default styles */
+        body, h1, h2, h3, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Box sizing border-box for better layout control */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #555;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3.5em;
+            color: #fff;
+        }
+
+        header p {
+            font-size: 1.6em;
+            margin-top: 10px;
+            color: #ecf0f1;
+        }
+
+        nav {
+            margin-top: 20px;
+        }
+
+        nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.4em;
+            transition: color 0.3s ease;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        section {
+            margin: 60px 0;
+        }
+
+        img {
+            max-width: 40%;
+            height: auto;
+            border-radius: 50px;
+            display: block;
+            margin: 20px auto;
+        }
+
+        .bio {
+            text-align: justify;
+            line-height: 1.8;
+            font-size: 1.4em;
+            color: #333;
+        }
+
+        .skills {
+            margin-top: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .skill {
+            background-color: #3498db;
+            color: #ecf0f1;
+            padding: 20px 30px;
+            margin: 20px 0;
+            border-radius: 20px;
+            width: 23%;
+            text-align: center;
+            font-size: 1.4em;
+            transition: transform 0.3s ease;
+        }
+
+        .skill:hover {
+            transform: scale(1.05);
+        }
+
+        .projects {
+            margin-top: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .project {
+            background-color: #ecf0f1;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 0 0 40px 0;
+            width: 45%;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .project:hover {
+            transform: scale(1.03);
+        }
+
+        .project img {
+            max-width: 100%;
+            height: auto;
+            border-bottom: 4px solid #3498db;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project h3 {
+            margin-bottom: 10px;
+            color: #3498db;
+            font-size: 1.6em;
+        }
+
+        .project p {
+            font-size: 1.4em;
+            color: #555;
+        }
+
+        .more-projects-btn {
+            background-color: #3498db;
+            color: #ecf0f1;
+            padding: 15px 30px;
+            margin: 20px 0;
+            border-radius: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 1.4em;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .more-projects-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .education {
+            margin-top: 40px;
+        }
+
+        .education h2 {
+            color: #3498db;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .education-item {
+            margin-bottom: 20px;
+        }
+
+        .education-item h3 {
+            margin-bottom: 10px;
+            font-size: 1.6em;
+            color: #3498db;
+        }
+
+        .education-item p {
+            font-size: 1.4em;
+            color: #555;
+        }
+
+        .contact {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-info p {
+            font-size: 1.6em;
+            margin: 15px 30px;
+            color: #333;
+        }
+
+        .contact-info img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .shapes {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+        }
+
+        .circle {
+            background-color: #3498db;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+        }
+
+        .rectangle {
+            background-color: #e74c3c;
+            width: 200px;
+            height: 140px;
+            border-radius: 30px;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 1.4em;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Shehryar</h1>
+            <p>Web Developer | UI/UX Designer</p>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#education">Education</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <img src="Shari.jpg" alt="Shehryar">
+            <p class="bio">
+                Welcome to my digital space! I'm Shehryar, a passionate web developer and UI/UX designer based in Islamabad, Pakistan. With a strong foundation in HTML, CSS, and JavaScript, I bring ideas to life by creating engaging and user-friendly websites. I have a keen interest in the latest web technologies and design trends, ensuring that my work is always up-to-date and visually appealing.
+            </p>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills">
+                <div class="skill">HTML5</div>
+                <div class="skill">CSS3</div>
+                <div class="skill">JavaScript</div>
+                <div class="skill">React</div>
+                <div class="skill">Responsive Design</div>
+                <div class="skill">UI/UX Design</div>
+                <div class="skill">Git</div>
+                <div class="skill">Node.js</div>
+                <div class="skill">Web Accessibility</div>
+                <div class="skill">SASS/SCSS</div>
+                <div class="skill">Webpack</div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects">
+                <div class="project">
+                    <img src="Fitness.png" alt="Fitness Tracker">
+                    <div class="project-content">
+                        <h3>Fitness Tracker</h3>
+                        <p>Developed a fitness tracking web application that allows users to log their workouts, set goals, and track their progress over time. The application integrates with a database for data persistence and provides a user-friendly interface for an optimal tracking experience.</p>
+                    </div>
+                </div>
+                <div class="project">
+                    <img src="Airline.png" alt="Airline Reservation System">
+                    <div class="project-content">
+                        <h3>Airline Reservation System</h3>
+                        <p>The Airline Reservation System is a comprehensive web application designed to streamline the airline booking process. It includes features such as flight search, booking management, and user authentication. The goal is to provide users with a seamless and efficient booking experience.</p>
+                    </div>
+                </div>
+                <div class="project">
+                    <img src="Online .png" alt="Online Cloth Shopping Store">
+                    <div class="project-content">
+                        <h3>Online Cloth Shopping Store</h3>
+                        <p>Created an online clothing store with a modern and user-friendly interface. Users can browse a variety of clothing items, add them to their cart, and securely complete the purchase process. The application ensures a smooth and enjoyable shopping experience for users.</p>
+                    </div>
+                </div>
+                <div class="project">
+                    <img src="Restaurant.png" alt="Restaurant Booking System">
+                    <div class="project-content">
+                        <h3>Restaurant Booking System</h3>
+                        <p>Developed a system for restaurant reservations, allowing users to check restaurant availability, select preferred time slots, and make reservations seamlessly. The system also provides confirmation details and enhances the overall dining experience for users.</p>
+                    </div>
+                </div>
+                <div class="project">
+                    <img src="personal-portfolio-website.jpg" alt="Portfolio Website">
+                    <div class="project-content">
+                        <h3>Portfolio Website</h3>
+                        <p>Designed and developed a personal portfolio website to showcase my skills, projects, and experiences. The website is built with a responsive design, ensuring optimal viewing on various devices. It incorporates modern design trends for an enhanced user experience.</p>
+                    </div>
+                </div>
+                <a href="#more-projects" class="more-projects-btn">More Projects</a>
+            </div>
+        </section>
+
+        <section id="education" class="education">
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3>Bachelor in Computer Science</h3>
+                <p>Comsats University, Islamabad, Pakistan</p>
+                <p>2020-2024</p>
+            </div>
+            <div class="education-item">
+                <h3>Intermediate (College)</h3>
+                <p>Punjab College, Gujrat, Pakistan</p>
+                <p>2018-2020</p>
+            </div>
+            <div class="education-item">
+                <h3>Matriculation (School)</h3>
+                <p>Bahawal Public High School, Gujrat, Pakistan</p>
+                <p>-2018</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <div class="contact-info">
+                <p><img src="Phone.png" alt="Phone icon" style="width: 30px; height: 30px; margin-right: 10px;">Phone: +923167606344</p>
+                <p><img src="Gmail.png" alt="Gmail icon" style="width: 30px; height: 30px; margin-right: 10px;">Email: sharicheema10@gmail.com</p>
+            </div>
+            <div class="shapes">
+                <div class="circle"></div>
+                <div class="rectangle"></div>
+            </div>
+        </section>
+
+        <section id="more-projects">
+            <!-- Additional projects can be added here -->
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Shehryar. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
